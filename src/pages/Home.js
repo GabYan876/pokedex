@@ -14,31 +14,25 @@ export default function Home() {
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data.data)) {
-          setPokemons(data.data);
-        } else {
-          console.error('Invalid data format received from the API:', data);
+          setPokemons(data.data)
         }
       })
-      .catch(error => console.error('Error fetching pokemon:', error));
 
     // Requête pour obtenir la liste des types
     fetch('https://pokedex-api.3rgo.tech/api/types')
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data.data)) {
-          setTypes(data.data);
-        } else {
-          console.error('Invalid data format received from the API:', data);
+          setTypes(data.data)
         }
       })
-      .catch(error => console.error('Error fetching types:', error));
   }, [])
 
   return (
     <>
     <Routes>
       <Route path='/' element={<HomeCard pokemons={Pokemons} types={Types}/>}/>
-      <Route path='/pokemon' element={<Pokemon test={'test'}/>}/>
+      <Route path='/:name' element={<Pokemon pokemons={Pokemons} types={Types}/>}/>
     </Routes>
     </>
   )
