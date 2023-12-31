@@ -5,10 +5,9 @@ import Home from './pages/Home.js'
 import './css/app.css'
 
 function App() {
-
   return (
     <>
-    <Header pokemons={Pokemons} types={Types}/>
+    <Header/>
     <Home/>
     </>
   )

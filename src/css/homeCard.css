@@ -43,7 +43,6 @@ a {
     width: 20%;
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.8);
-    margin-left: 10px;
     margin: 5px;
 }
 
@@ -55,7 +54,6 @@ a {
 .generation {
     margin: 0;
     background-color: rgb(255, 255, 255);
-    margin-left: 5px;
 }
 
 .typeSection {
