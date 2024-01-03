@@ -1,8 +1,9 @@
 import { useParams } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
 
 export default function Pokemon({pokemons, types}) {
 
-  // Fonction pour obtenir le nom et l'image du type en fonction de l'ID du type
+  // obtenir le nom du/des type(s) en fonction de l'ID du type
   const getTypeInfo = typeId => {
     const type = types.find(t => t.id === typeId)
     return type ? { name: type.name.en, image: type.image } : null
@@ -11,8 +12,17 @@ export default function Pokemon({pokemons, types}) {
   const { name } = useParams()
   const pokemonName = name ? name.toLowerCase() : ''
 
-  const pokemon = pokemons.find(pokemon => pokemon.name.en.toLowerCase() === pokemonName);
-  console.log(pokemon);
+  const pokemon = pokemons.find(pokemon => pokemon.name.en.toLowerCase() === pokemonName)
+
+  const [pokemonImage, setPokemonImage] = useState(pokemon.image)
+
+  function imageLeftClick() {
+    if (pokemonImage === pokemon.image) {
+      setPokemonImage(pokemon.image_shiny || pokemon.image);
+    } else if (pokemonImage === pokemon.image_shiny) {
+      setPokemonImage(pokemon.image)
+    }
+  }
 
   return (
     <div className="pokemon">
@@ -20,11 +30,14 @@ export default function Pokemon({pokemons, types}) {
             <div className="cardPokemon" key={pokemon.id}>
               <section className="profilPokemon">
                 <h2 className="namePokemon">{pokemon.name.en}</h2>
-                <img className="imagePokemon" src={pokemon.image} alt={pokemon.name.en}/>
+                <button className='buttonImagePokemon' onClick={imageLeftClick}>
+                  <img className="imagePokemon" src={pokemonImage} alt={pokemon.name.en}/>
+                </button>
+
               </section>
 
               <section className='statsPokemon'>
-                  <h3 className="statGris">N° {pokemon.id}</h3>
+                  <h3 className="statGrey">N° {pokemon.id}</h3>
                   <h3 className="statWhite">Generation: {pokemon.generation}</h3>
                   <section className='typeSectionPokemon'>
                       <h3 className='type'>Type:</h3>
@@ -38,16 +51,16 @@ export default function Pokemon({pokemons, types}) {
                       })}
                   </section>
                   <h3 className='statWhite'>Height: {pokemon.height} m</h3>
-                  <h3 className='statGris'>Weight: {pokemon.weight} lbs</h3>
+                  <h3 className='statGrey'>Weight: {pokemon.weight} lbs</h3>
                   <h3 className='statWhite'>Hp: {pokemon.stats.hp}</h3>
-                  <h3 className='statGris'>Atk: {pokemon.stats.atk}</h3>
+                  <h3 className='statGrey'>Atk: {pokemon.stats.atk}</h3>
                   <h3 className='statWhite'>Def: {pokemon.stats.def}</h3>
-                  <h3 className='statGris'>Vit: {pokemon.stats.vit}</h3>
+                  <h3 className='statGrey'>Vit: {pokemon.stats.vit}</h3>
                   <h3 className='statWhite'>Spe Def: {pokemon.stats.spe_def}</h3>
-                  <h3 className='statGris'>Spe Atk: {pokemon.stats.spe_atk}</h3>
+                  <h3 className='statGrey'>Spe Atk: {pokemon.stats.spe_atk}</h3>
               </section>
             </div>
-        ) : console.log("rien")}
+        ) : null}
     </div>
   )
 }

@@ -2,6 +2,7 @@
     width: 90%;
     margin-left: 5%;
     margin-top: 40px;
+    overflow: hidden;
 }   
 
 .cardPokemon {
@@ -24,15 +25,26 @@
     border-top-left-radius: 25px;
 }
 
-.imagePokemon{
-    width: 100%;
-    border-top-left-radius: 10%;
+.buttonImagePokemon {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: none;
     background-color: rgba(0, 0, 0, 0.8);
+    border-top-left-radius: 10%;
+    overflow: hidden;
 }
 
-.statsPokemon {
-    width: 100%;
-}
+.buttonImagePokemon:hover {background-color: rgb(0, 0, 0, 0.85);}
+
+.imagePokemon {width: 100%}
+
+.imagePokemon:hover {transform: scale(1.1);}
+
+.statsPokemon {width: 100%;}
 
 .typeSectionPokemon {
     margin: 0;
@@ -40,14 +52,26 @@
     align-items: center;
 }
 
-.statGris {
+.statGrey {
     margin: 0;
     padding-left: 5px;
+    transform-origin: left;
+}
+
+.statGrey:hover {
+    transform: scale(1.2);
+
 }
 
 .statWhite {
     margin: 0;
+    padding-left: 5px;
     background-color: rgb(255, 255, 255);
+    transform-origin: left;
+}
+
+.statWhite:hover {
+    transform: scale(1.2);
 }
 
 @media(max-width : 550px){
