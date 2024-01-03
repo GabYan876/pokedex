@@ -18,15 +18,15 @@ export default function HomeCard({pokemons, types}) {
             </NavLink>
 
             <section className='stats'>
-                <h3 className="id">N° {pokemon.id}</h3>
-                <h3 className="generation">Generation: {pokemon.generation}</h3>
+                <h3 className="statGrey">N° {pokemon.id}</h3>
+                <h3 className="statWhite">Generation: {pokemon.generation}</h3>
                 <section className='typeSection'>
                     <h3 className='type'>Type:</h3>
                     {pokemon.types.map(typeId => {
                     const typeInfo = getTypeInfo(typeId)
                     return typeInfo ? (
                         <div key={typeId}>
-                            <p className='typeName'>{typeInfo.name}</p>
+                            <h3 className='typeName'>{typeInfo.name}</h3>
                         </div>
                     ) : null;
                     })}

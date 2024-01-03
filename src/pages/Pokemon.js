@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 export default function Pokemon({pokemons, types}) {
 
@@ -39,13 +39,13 @@ export default function Pokemon({pokemons, types}) {
               <section className='statsPokemon'>
                   <h3 className="statGrey">N° {pokemon.id}</h3>
                   <h3 className="statWhite">Generation: {pokemon.generation}</h3>
-                  <section className='typeSectionPokemon'>
+                  <section className='typeSection'>
                       <h3 className='type'>Type:</h3>
                       {pokemon.types.map(typeId => {
                       const typeInfo = getTypeInfo(typeId)
                       return typeInfo ? (
                           <div key={typeId}>
-                              <p className='typeName'>{typeInfo.name}</p>
+                              <h3 className='typeName'>{typeInfo.name}</h3>
                           </div>
                       ) : null
                       })}
@@ -60,7 +60,7 @@ export default function Pokemon({pokemons, types}) {
                   <h3 className='statGrey'>Spe Atk: {pokemon.stats.spe_atk}</h3>
               </section>
             </div>
-        ) : null}
+        ) : <h1>No pokemon</h1>}
     </div>
   )
 }
