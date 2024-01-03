@@ -33,7 +33,6 @@ export default function Pokemon({pokemons, types}) {
                 <button className='buttonImagePokemon' onClick={imageLeftClick}>
                   <img className="imagePokemon" src={pokemonImage} alt={pokemon.name.en}/>
                 </button>
-
               </section>
 
               <section className='statsPokemon'>
@@ -60,7 +59,60 @@ export default function Pokemon({pokemons, types}) {
                   <h3 className='statGrey'>Spe Atk: {pokemon.stats.spe_atk}</h3>
               </section>
             </div>
-        ) : <h1>No pokemon</h1>}
+        ) : null}
+
+      <section className='evolution'>
+        {pokemon.evolvedFrom && Object.keys(pokemon.evolvedFrom).length > 0 ? (
+              Object.keys(pokemon.evolvedFrom).map(id => {
+                const evolvedPokemon = pokemons.find(p => p.id === parseInt(id, 10));
+                return (
+                  <div className='pokemonEvolutionCard' key={id}>
+                    {evolvedPokemon && (
+                      <>
+                      <section className='evolutionNameSection'>
+                        <h1 className='evolutionName'>{evolvedPokemon.name.en}</h1>
+                      </section>
+
+                      <section className='evolutionImageSection'>
+                        <img className='evolutionImage' src={evolvedPokemon.image} alt={evolvedPokemon.name.en} />
+                      </section>
+
+                      <section className='evolutionLvlSection'>
+                        <h2 className='evolutionLvl'>{pokemon.evolvedFrom[id]}</h2>
+                      </section>
+                      </>
+                    )}
+                  </div>
+                );
+              })
+            ) : null}
+
+        {pokemon.evolvesTo && Object.keys(pokemon.evolvesTo).length > 0 ? (
+            Object.keys(pokemon.evolvesTo).map(id => {
+              const evolvedPokemon = pokemons.find(p => p.id === parseInt(id, 10));
+              return (
+                <div className='pokemonEvolutionCard' key={id}>
+                  {evolvedPokemon && (
+                    <>
+                    <section className='evolutionNameSection'>
+                      <h1 className='evolutionName'>{evolvedPokemon.name.en}</h1>
+                    </section>
+
+                    <section className='evolutionImageSection'>
+                      <img className='evolutionImage' src={evolvedPokemon.image} alt={evolvedPokemon.name.en} />
+                    </section>
+
+                    <section className='evolutionLvlSection'>
+                      <h2 className='evolutionLvl'>{pokemon.evolvesTo[id]}</h2>
+                    </section>
+                    </>
+                  )}
+                </div>
+              );
+            })
+          ) : null}
+      </section>
+
     </div>
   )
 }
