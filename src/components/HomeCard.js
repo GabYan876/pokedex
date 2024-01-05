@@ -2,10 +2,10 @@ import {NavLink} from 'react-router-dom'
 
 export default function HomeCard({pokemons, types}) {
 
-  // Fonction pour obtenir le nom et l'image du type en fonction de l'ID du type
+  // Fonction pour obtenir le nom du type en fonction de l'ID du type
   const getTypeInfo = typeId => {
     const type = types.find(t => t.id === typeId);
-    return type ? { name: type.name.en, image: type.image } : null
+    return type ? { name: type.name.en } : null
   }
   
   return (
