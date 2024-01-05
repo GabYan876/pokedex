@@ -6,22 +6,23 @@ export default function Header({pokemons, types}) {
         return type ? { name: type.name.en } : null
     }
 
+    //{Array.isArray(pokemons) && pokemons.map(pokemon => (
+    //    <div key={pokemon.id}>
+    //        {pokemon.name.en}
+
+    //        {pokemon.types.map(typeId => {
+    //        const typeInfo = getTypeInfo(typeId)
+    //        return typeInfo ? (
+    //            <div key={typeId}>
+    //                <h3>{typeInfo.name}</h3>
+    //            </div>
+    //        ) : null;
+    //        })}
+    //    </div>
+    //))}
+
     return (
         <div className="header">
-            {Array.isArray(pokemons) && pokemons.map(pokemon => (
-                <div key={pokemon.id}>
-                    {pokemon.name.en}
-
-                    {pokemon.types.map(typeId => {
-                    const typeInfo = getTypeInfo(typeId)
-                    return typeInfo ? (
-                        <div key={typeId}>
-                            <h3>{typeInfo.name}</h3>
-                        </div>
-                    ) : null;
-                    })}
-                </div>
-            ))}
         </div>
     )
 }
