@@ -149,4 +149,8 @@
     .imagePokemon {
         border-top-right-radius: 25px;
     }
+
+    .evolution {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
